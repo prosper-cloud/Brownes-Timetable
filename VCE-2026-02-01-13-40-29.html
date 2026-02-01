@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browne’s 100L Strategy</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: rgba(30, 41, 59, 0.75);
+      --accent: #38bdf8;
+      --study: #818cf8;
+      --tutorial: #fbbf24;
+      --night: #f472b6;
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #e5e7eb;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      overflow-x: hidden;
+      perspective: 1200px;
+    }
+
+    /* Floating 3D Orbs */
+    .orb {
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      animation: float 14s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    .orb.one {
+      background: #38bdf8;
+      top: 10%;
+      left: 5%;
+    }
+
+    .orb.two {
+      background: #818cf8;
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 4s;
+    }
+
+    .orb.three {
+      background: #f472b6;
+      top: 55%;
+      left: 35%;
+      animation-delay: 8s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(30px, -40px);
+      }
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 40px 20px;
+      transform-style: preserve-3d;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: -1.5px;
+    }
+
+    header p {
+      opacity: 0.75;
+      font-size: 1rem;
+    }
+
+    .table-wrapper {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      overflow-x: auto;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transform: translateZ(40px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 18px;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--accent);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    td {
+      padding: 18px;
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 0.95rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    tbody tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateZ(10px);
+    }
+
+    .time-slot {
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(2, 6, 23, 0.6);
+      width: 150px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-class { background: rgba(56,189,248,0.2); color: var(--accent); }
+    .tag-study { background: rgba(129,140,248,0.2); color: var(--study); }
+    .tag-tutorial { background: rgba(251,191,36,0.2); color: var(--tutorial); }
+    .tag-night { background: rgba(244,114,182,0.2); color: var(--night); }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Background Elements -->
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <div class="container">
+    <header>
+      <h1>Browne’s 100L Daily Grind</h1>
+      <p>Late Nights. Deep Focus. No Fluff.</p>
+    </header>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Mon – Fri (Lectures)</th>
+            <th>Saturday (Deep Work)</th>
+            <th>Sunday (Reset)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="time-slot">06:00 – 07:00</td>
+            <td>Wake Up + Home Workout</td>
+            <td>Sleep In</td>
+            <td>Late Wake Up</td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">07:00 – 08:30</td>
+            <td>Bath / Breakfast / Commute</td>
+            <td>Laundry & Cleaning</td>
+            <td>Long Breakfast / Chill</td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">09:00 – 15:00</td>
+            <td>
+              <span class="tag tag-class">Main Classes</span><br>
+              Core Departmental Lectures
+            </td>
+            <td>
+              <span class="tag tag-study">Research</span><br>
+              Legal Method / Logic
+            </td>
+            <td>
+              <span class="tag tag-night">Personal</span><br>
+              Rest / Hobbies
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">15:00 – 17:00</td>
+            <td>
+              <span class="tag tag-tutorial">Tutorials</span><br>
+              Intensive Group Sessions
+            </td>
+            <td>
+              <span class="tag tag-study">Deep Dive</span><br>
+              Complex Topics
+            </td>
+            <td>
+              <span class="tag tag-night">Plan</span><br>
+              Prep for the week
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">18:00 – 20:30</td>
+            <td>
+              <span class="tag">Reset</span><br>
+              Bath, Heavy Meal, Rest
+            </td>
+            <td>Evening Out / Social</td>
+            <td>Meal Prep / Light Reading</td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">20:30 – 00:00</td>
+            <td>
+              <span class="tag tag-study">Deep Study Block</span><br>
+              Focus Subject of the Day
+            </td>
+            <td>
+              <span class="tag tag-study">Past Questions</span><br>
+              Exam Practice
+            </td>
+            <td>
+              <span class="tag tag-night">Early Sleep</span><br>
+              Recover for Monday
+            </td>
+          </tr>
+
+          <tr>
+            <td class="time-slot">00:00 – 01:00</td>
+            <td>
+              <span class="tag tag-night">Revision</span><br>
+              Consolidate & Close Out
+            </td>
+            <td>Movie / Entertainment</td>
+            <td>Sleep</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
